@@ -69,50 +69,50 @@ True
 Обращайте внимание на то, где атрибут класса, а где атрибут объекта."""
 
 
-class Animal:
-    alive = True
+class Animal:  # Содержит подклассы Mammal и Predator
+
+
+    alive = True  # Атрибуты класса Animal
     fed = False
 
-    def __init__(self, name):
+    def __init__(self, name):  # Базовый класс иерархии. При вызове не принимает аргументов и возвращает
+        # новый экземпляр, не имеющий атрибутов.
         self.name = name
 
+    def eat(self, food):  # Метод класса Animal.
+        if food.edible:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True
+        else:
+            print(f'{self.name} не стал есть {food.name}')
+            self.alive = False
 
-class Plant:
+
+class Plant:  # Содержит подклассы Flower и Fruit
     edible = False
 
-    def __init__(self, name):
+    def __init__(self, name):  # Переопределяется в Fruit
         self.name = name
+        self.edible = False
 
 
 class Mammal(Animal):
-    def eat(self, food):
-        if food.edible:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
+    pass
 
 
 class Predator(Animal):
-
-    def eat(self, food):
-        if food.edible:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
-
+    pass
 
 
 class Flower(Plant):
     pass
-#  edible = True
 
 
 class Fruit(Plant):
-    edible = True
+    def __init__(self, name):
+        super().__init__(name)  # используется для вызова метода родительского класса Plant из дочернего Fruit.
+
+        self.edible = True
 
 
 a1 = Predator('Волк с Уолл-Стрит')

@@ -49,5 +49,4 @@ vehicle1.owner = Fore.GREEN + 'Vasyok'
 
 # Проверяем что поменялось
 vehicle1.print_info()
-# print(dir(vehicle1))
-# print((Fore.RED + 'This text is ') + (Fore.GREEN + 'red in color'))
+
